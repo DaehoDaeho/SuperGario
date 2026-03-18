@@ -59,6 +59,7 @@
   <Project Path="Unity.2D.Animation.Runtime.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.ShaderGraph.Utilities.csproj" />
@@ -67,7 +68,6 @@
   <Project Path="Unity.2D.Common.Runtime.csproj" />
   <Project Path="Unity.2D.PixelPerfect.csproj" />
   <Project Path="Unity.Rendering.LightTransport.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
