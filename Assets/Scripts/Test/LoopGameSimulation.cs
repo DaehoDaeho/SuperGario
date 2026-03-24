@@ -39,6 +39,11 @@ public class LoopGameSimulation : MonoBehaviour
 
         int damage = 10;
         TakeDamage(damage);
+
+        PrintItemInfo("물약", 3);
+
+        bool isDead = IsDead();
+        int addResult = AddNumbers(3, 5);
     }
 
     // Update is called once per frame
@@ -55,5 +60,22 @@ public class LoopGameSimulation : MonoBehaviour
     private void TakeDamage(int damage)
     {
         playerHp -= damage;
+    }
+
+    private void PrintItemInfo(string itemName, int itemCount)
+    {
+        Debug.Log(itemName + itemCount);
+    }
+
+    private int AddNumbers(int firstValue, int secondValue)
+    {
+        int result = firstValue + secondValue;
+        return result;
+    }
+
+    private bool IsDead()
+    {
+        bool result = playerHp <= 0;
+        return result;
     }
 }
