@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FunctionBasicExample : MonoBehaviour
 {
-    int playerHp = 5;
+    private int playerHp = 5;
     int playerScore = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,6 +13,16 @@ public class FunctionBasicExample : MonoBehaviour
         //PrintPlayerName();
         //PrintLessonEndMessage();
         //AddScore(100);
+        TakeDamage(10);
+        bool isDead = IsDead();
+        if(isDead == true)
+        {
+            Debug.Log("플레이어가 사망했습니다.");
+        }
+        else
+        {
+            Debug.Log("아직 싸울 수 있다.");
+        }
     }
 
     private void PrintLessonStartMessage()
@@ -49,4 +59,32 @@ public class FunctionBasicExample : MonoBehaviour
     // playerHp가 0 이하인지 체크해서 결과를 반환하는 함수를 호출하고 결과를 bool 형 변수에 저장.
     // if 문으로 결과가 true인지 false인지 검사.
     // true면 "플레이어가 사망했습니다" 메시지 출력. false면 "아직 싸울 수 있다" 메시지 출력.
+    private bool IsDead()
+    {
+        //if(playerHp <= 0)
+        //{
+        //    return true;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
+
+        //if(playerHp <= 0)
+        //{
+        //    return true;
+        //}
+
+        //return false;
+
+        //bool isDead = playerHp <= 0;
+        //return isDead;
+
+        return playerHp <= 0;
+    }
+
+    public int GetPlayerHp()
+    {
+        return playerHp;
+    }
 }
