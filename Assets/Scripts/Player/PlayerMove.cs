@@ -16,8 +16,16 @@ public class PlayerMove : MonoBehaviour
         ReadInput();
 
         // 이동 처리.
-        MovePlayer();
+        
         PrintCurrentMoveState();
+    }
+
+    /// <summary>
+    /// 물리 기반 처리를 하는데 적합한 함수.
+    /// </summary>
+    void FixedUpdate()
+    {
+        MovePlayer();
     }
 
     void ReadInput()
