@@ -15,8 +15,6 @@ public class PlayerMove : MonoBehaviour
         // 입력 받기.
         ReadInput();
 
-        // 이동 처리.
-        
         PrintCurrentMoveState();
     }
 
