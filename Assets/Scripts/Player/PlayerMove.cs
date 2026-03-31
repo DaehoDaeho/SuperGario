@@ -4,6 +4,10 @@ public class PlayerMove : MonoBehaviour
 {
     // 이동속도.
     public float moveSpeed = 5.0f;
+
+    // 점프력.
+    public float jumpForce = 8.0f;
+
     public Rigidbody2D rb;
 
     // 키 입력 방식은 동일.
@@ -29,6 +33,17 @@ public class PlayerMove : MonoBehaviour
     void ReadInput()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
+
+        // 스페이스 키를 눌렀는지 체크를 하고 눌렀으면 점프 처리.
+        if(Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
     void MovePlayer()
