@@ -1,17 +1,20 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
     // 이동속도.
-    public float moveSpeed = 5.0f;
+    [SerializeField] private float moveSpeed = 5.0f;
 
     // 점프력.
-    public float jumpForce = 8.0f;
+    [SerializeField] private float jumpForce = 8.0f;
 
-    public Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
 
     // 키 입력 방식은 동일.
     private float moveInput = 0.0f;
+
+    [SerializeField] private bool canJump = true;
 
     // Update is called once per frame
     void Update()
@@ -35,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
 
         // 스페이스 키를 눌렀는지 체크를 하고 눌렀으면 점프 처리.
-        if(Input.GetKeyDown(KeyCode.Space) == true)
+        if(Input.GetKeyDown(KeyCode.Space) == true && canJump == true)
         {
             Jump();
         }
@@ -64,5 +67,24 @@ public class PlayerMove : MonoBehaviour
     {
         Debug.Log("현재 입력값 : " + moveInput);
         Debug.Log("현재 속도 : " + rb.linearVelocity);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 충돌한 대상이 바닥인지 판단.
+        // 태그 정보를 이용해서 처리.
+        // GameObject.CompareTag() : 해당 게임 오브젝트의 태그를 비교하는 함수.
+        if(collision.gameObject.CompareTag("Ground") == true)
+        {
+            canJump = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground") == true)
+        {
+            canJump = false;
+        }
     }
 }
