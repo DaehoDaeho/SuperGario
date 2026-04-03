@@ -11,10 +11,14 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
 
+    [SerializeField] private Animator animator;
+
     // 키 입력 방식은 동일.
     private float moveInput = 0.0f;
 
     [SerializeField] private bool canJump = true;
+
+    private bool move = false;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +26,7 @@ public class PlayerMove : MonoBehaviour
         // 입력 받기.
         ReadInput();
 
+        UpdateAnimator();
         PrintCurrentMoveState();
     }
 
@@ -36,6 +41,15 @@ public class PlayerMove : MonoBehaviour
     void ReadInput()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
+
+        if(moveInput != 0.0f)
+        {
+            move = true;
+        }
+        else
+        {
+            move = false;
+        }
 
         // 스페이스 키를 눌렀는지 체크를 하고 눌렀으면 점프 처리.
         if(Input.GetKeyDown(KeyCode.Space) == true && canJump == true)
@@ -77,6 +91,7 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground") == true)
         {
             canJump = true;
+            animator.SetBool("IsGrounded", true);
         }
     }
 
@@ -85,6 +100,13 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground") == true)
         {
             canJump = false;
+            animator.SetBool("IsGrounded", false);
         }
+    }
+
+    void UpdateAnimator()
+    {
+        // 애니메이터에 bool 값을 전달해서 애니메이션을 전환해 주는 함수.
+        animator.SetBool("Move", move);
     }
 }

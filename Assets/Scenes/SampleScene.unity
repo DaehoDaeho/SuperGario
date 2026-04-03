@@ -659,6 +659,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   rb: {fileID: 1788869571}
+  animator: {fileID: 1788869574}
   canJump: 1
 --- !u!95 &1788869574
 Animator:
