@@ -18,6 +18,10 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private bool canJump = true;
 
+    [SerializeField] private SpriteRenderer sr;
+
+    [SerializeField] private bool useScaleToDirection = true;
+
     private bool move = false;
 
     // Update is called once per frame
@@ -26,7 +30,8 @@ public class PlayerMove : MonoBehaviour
         // 입력 받기.
         ReadInput();
 
-        UpdateAnimator();
+        UpdateDirection();  // 방향 갱신.
+        UpdateAnimator();   // 애니메이션 갱신.
         PrintCurrentMoveState();
     }
 
@@ -108,5 +113,37 @@ public class PlayerMove : MonoBehaviour
     {
         // 애니메이터에 bool 값을 전달해서 애니메이션을 전환해 주는 함수.
         animator.SetBool("Move", move);
+    }
+
+    void UpdateDirection()
+    {
+        if(useScaleToDirection == true)
+        {
+            // Mathf : 수학에 관련된 함수들을 모아놓은 구조체.
+            // Mathf.Abs : 절대값을 반환해주는 함수.
+            float scaleX = Mathf.Abs(transform.localScale.x);
+            if (moveInput < 0.0f)
+            {
+                scaleX *= -1.0f;
+            }
+            else
+            {
+                scaleX *= 1.0f;
+            }
+
+            transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            // 왼쪽 방향일 경우
+            if (moveInput < 0.0f)
+            {
+                sr.flipX = true;
+            }
+            else
+            {
+                sr.flipX = false;
+            }
+        }
     }
 }
