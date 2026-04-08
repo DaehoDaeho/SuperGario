@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
             // GetComponent : <> 안에 지정된 컴포넌트를 가져오는 함수.
             PlayerScoreManager playerScoreManager = collider.GetComponent<PlayerScoreManager>();
             playerScoreManager.AddScore(scoreAmount);
+            playerScoreManager.AddCount();
 
             // Destroy : 게임 오브젝트를 파괴하는 함수.
             Destroy(gameObject);
