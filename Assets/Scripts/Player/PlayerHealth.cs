@@ -11,6 +11,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHp = 0;
     [SerializeField] private TMP_Text textHp;
     [SerializeField] private Image imageHp;
+    [SerializeField] UIGameOver uiGameOver;
+    [SerializeField] Animator animator;
+
+    private bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,9 +30,36 @@ public class PlayerHealth : MonoBehaviour
         if(currentHp < 0)
         {
             currentHp = 0;
-        }
+        }        
 
         UpdateHPUI();
+
+        if (currentHp == 0)
+        {
+            Die();
+        }
+        else
+        {
+            animator.SetTrigger("Hurt");
+        }
+    }
+
+    void Die()
+    {
+        // 사망 처리.
+        isDead = true;
+
+        // 사망 애니메이션 재생.
+        animator.SetTrigger("Dead");
+
+        // 게임오버 UI 출력.
+        // 지정한 시간이 지나고 난 후 함수를 호출하는 기능을 사용.
+        Invoke("ShowGameOverUI", 3.0f);
+    }
+
+    void ShowGameOverUI()
+    {
+        uiGameOver.ShowGameOverUI(true);
     }
 
     public void Heal(int healAmount)
@@ -64,5 +95,10 @@ public class PlayerHealth : MonoBehaviour
     public int GetMaxHp()
     {
         return maxHp;
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }

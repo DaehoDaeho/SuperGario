@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     // 키 입력 방식은 동일.
     private float moveInput = 0.0f;
+    private float lastDirection = 0.0f;
 
     [SerializeField] private bool canJump = true;
 
@@ -22,11 +23,19 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private bool useScaleToDirection = true;
 
+    [SerializeField] private PlayerHealth playerHealth;
+
     private bool move = false;
 
     // Update is called once per frame
     void Update()
     {
+        if(playerHealth.IsDead() == true)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         // 입력 받기.
         ReadInput();
 
@@ -40,6 +49,12 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        if (playerHealth.IsDead() == true)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         MovePlayer();
     }
 
@@ -50,6 +65,7 @@ public class PlayerMove : MonoBehaviour
         if(moveInput != 0.0f)
         {
             move = true;
+            lastDirection = moveInput;
         }
         else
         {
@@ -122,7 +138,7 @@ public class PlayerMove : MonoBehaviour
             // Mathf : 수학에 관련된 함수들을 모아놓은 구조체.
             // Mathf.Abs : 절대값을 반환해주는 함수.
             float scaleX = Mathf.Abs(transform.localScale.x);
-            if (moveInput < 0.0f)
+            if (lastDirection < 0.0f)
             {
                 scaleX *= -1.0f;
             }
@@ -136,7 +152,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             // 왼쪽 방향일 경우
-            if (moveInput < 0.0f)
+            if (lastDirection < 0.0f)
             {
                 sr.flipX = true;
             }
