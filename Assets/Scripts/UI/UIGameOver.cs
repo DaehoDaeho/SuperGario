@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // SceneManager를 사용하기 위한 네임스페이스.
 
 public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private GameObject panelGameOver;
+    [SerializeField] private RespawnPointManager respawnPointManager;
 
     void Start()
     {
@@ -23,5 +25,11 @@ public class UIGameOver : MonoBehaviour
         // 게임 씬을 다시 로딩.
         // SceneManager 클래스 사용.
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void OnClickRestartOnCheckPoint()
+    {
+        respawnPointManager.RestartGame();
+        ShowGameOverUI(false);
     }
 }

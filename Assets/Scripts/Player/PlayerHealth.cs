@@ -57,6 +57,19 @@ public class PlayerHealth : MonoBehaviour
         Invoke("ShowGameOverUI", 3.0f);
     }
 
+    /// <summary>
+    /// 리스폰 시 플레이어 체력을 최대 체력으로 복구.
+    /// </summary>
+    public void ResetHealthForRespawn()
+    {
+        currentHp = maxHp;
+        isDead = false;
+
+        UpdateHPUI();
+
+        animator.SetTrigger("Restart");
+    }
+
     void ShowGameOverUI()
     {
         uiGameOver.ShowGameOverUI(true);
