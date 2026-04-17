@@ -25,6 +25,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        if(isDead == true)
+        {
+            return;
+        }
+
         currentHp -= damageAmount;
 
         if(currentHp < 0)
@@ -68,11 +73,13 @@ public class PlayerHealth : MonoBehaviour
         UpdateHPUI();
 
         animator.SetTrigger("Restart");
+        Time.timeScale = 1.0f;
     }
 
     void ShowGameOverUI()
     {
         uiGameOver.ShowGameOverUI(true);
+        Time.timeScale = 0.0f;
     }
 
     public void Heal(int healAmount)

@@ -22,6 +22,8 @@ public class UIGameOver : MonoBehaviour
     /// </summary>
     public void OnClickRestartButton()
     {
+        Time.timeScale = 1.0f;
+
         // 게임 씬을 다시 로딩.
         // SceneManager 클래스 사용.
         SceneManager.LoadScene("SampleScene");

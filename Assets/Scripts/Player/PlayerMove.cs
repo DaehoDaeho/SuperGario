@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerHealth.IsDead() == true)
+        if (playerHealth.IsDead() == true)
         {
             rb.linearVelocity = Vector2.zero;
             return;
