@@ -15,6 +15,9 @@ public class PlayerScoreManager : MonoBehaviour
     [SerializeField]
     private TMP_Text textCoinCount;
 
+    [SerializeField] private EffectSoundPlayer effectSoundPlayer;
+    [SerializeField] private AudioClip coinClip;
+
     void Start()
     {
         UpdateScoreText();
@@ -27,6 +30,8 @@ public class PlayerScoreManager : MonoBehaviour
         Debug.Log("점수 획득 : " + newScore + ", 현재 점수 : " + score);
 
         UpdateScoreText();
+
+        effectSoundPlayer.PlayEffectSound(coinClip);
     }
 
     void UpdateScoreText()

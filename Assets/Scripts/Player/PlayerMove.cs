@@ -25,6 +25,9 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private PlayerHealth playerHealth;
 
+    [SerializeField] private EffectSoundPlayer effectSoundPlayer;
+    [SerializeField] private AudioClip jumpClip;
+
     private bool move = false;
 
     // Update is called once per frame
@@ -82,6 +85,12 @@ public class PlayerMove : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        PlayJumpSound();
+    }
+
+    void PlayJumpSound()
+    {
+        effectSoundPlayer.PlayEffectSound(jumpClip);
     }
 
     void MovePlayer()
