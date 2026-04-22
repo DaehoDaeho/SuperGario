@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Image imageHp;
     [SerializeField] UIGameOver uiGameOver;
     [SerializeField] Animator animator;
+    [SerializeField] private SimpleFlashEffect flashEffect;
+    [SerializeField] private HurtFlashReceiver flashReceiver;
 
     private bool isDead = false;
 
@@ -46,6 +48,16 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             animator.SetTrigger("Hurt");
+        }
+
+        if(flashEffect != null)
+        {
+            flashEffect.PlayFlash(Color.red, 0.5f);
+        }
+
+        if(flashReceiver != null)
+        {
+            flashReceiver.PlayFlash(0.5f);
         }
     }
 
