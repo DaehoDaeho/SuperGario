@@ -2464,6 +2464,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955751010}
   m_CullTransparentMesh: 1
+--- !u!1 &974090814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974090816}
+  - component: {fileID: 974090815}
+  m_Layer: 0
+  m_Name: RewardObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &974090815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974090814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e116b159f9e8f45ada695e90557c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardPrefabs:
+  - {fileID: 3536424287017832194, guid: 2e2cbbea224ffd04db0fbdc03d250030, type: 3}
+  - {fileID: 6534995658872079425, guid: c9916d3e53ba8b946b1516dad22a5632, type: 3}
+--- !u!4 &974090816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974090814}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013460533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,6 +7369,7 @@ MonoBehaviour:
   animator: {fileID: 1788869574}
   flashEffect: {fileID: 1788869579}
   flashReceiver: {fileID: 1788869580}
+  bgmPlayer: {fileID: 567704298}
 --- !u!114 &1788869577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8826,6 +8874,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPatrol
       objectReference: {fileID: 0}
+    - target: {fileID: 7516037471903824603, guid: cad92282de93f0a4080c4b8bd32e6e1d, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 3536424287017832194, guid: 2e2cbbea224ffd04db0fbdc03d250030, type: 3}
+    - target: {fileID: 7516037471903824603, guid: cad92282de93f0a4080c4b8bd32e6e1d, type: 3}
+      propertyPath: rewardPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516037471903824603, guid: cad92282de93f0a4080c4b8bd32e6e1d, type: 3}
+      propertyPath: 'rewardPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3536424287017832194, guid: 2e2cbbea224ffd04db0fbdc03d250030, type: 3}
+    - target: {fileID: 7516037471903824603, guid: cad92282de93f0a4080c4b8bd32e6e1d, type: 3}
+      propertyPath: 'rewardPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6534995658872079425, guid: c9916d3e53ba8b946b1516dad22a5632, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8883,6 +8947,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3575700303170987399, guid: 6f9e11a67559aae4e921d767c70881f3, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 3536424287017832194, guid: 2e2cbbea224ffd04db0fbdc03d250030, type: 3}
+    - target: {fileID: 3575700303170987399, guid: 6f9e11a67559aae4e921d767c70881f3, type: 3}
+      propertyPath: rewardPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575700303170987399, guid: 6f9e11a67559aae4e921d767c70881f3, type: 3}
+      propertyPath: 'rewardPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3536424287017832194, guid: 2e2cbbea224ffd04db0fbdc03d250030, type: 3}
+    - target: {fileID: 3575700303170987399, guid: 6f9e11a67559aae4e921d767c70881f3, type: 3}
+      propertyPath: 'rewardPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6534995658872079425, guid: c9916d3e53ba8b946b1516dad22a5632, type: 3}
     - target: {fileID: 8758602338515273339, guid: 6f9e11a67559aae4e921d767c70881f3, type: 3}
       propertyPath: m_Name
       value: EnemyChase
@@ -9185,3 +9265,4 @@ SceneRoots:
   - {fileID: 827602447}
   - {fileID: 1874811327513546970}
   - {fileID: 5643094953959479308}
+  - {fileID: 974090816}

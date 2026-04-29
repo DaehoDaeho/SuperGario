@@ -57,6 +57,10 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
+
+        // 싱글톤 객체에 접근해서 보상을 생성하는 함수 호출.
+        RewardManager.instance.CreateRandomReward(transform.position);
+
         Destroy(gameObject);
     }
 

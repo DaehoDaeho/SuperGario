@@ -7,6 +7,8 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth instance;
+
     [SerializeField] private int maxHp = 5;
     [SerializeField] private int currentHp = 0;
     [SerializeField] private TMP_Text textHp;
@@ -15,8 +17,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] private SimpleFlashEffect flashEffect;
     [SerializeField] private HurtFlashReceiver flashReceiver;
+    [SerializeField] private BGMPlayer bgmPlayer;
 
     private bool isDead = false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -90,6 +98,7 @@ public class PlayerHealth : MonoBehaviour
 
     void ShowGameOverUI()
     {
+        bgmPlayer.StopBGM();
         uiGameOver.ShowGameOverUI(true);
         Time.timeScale = 0.0f;
     }

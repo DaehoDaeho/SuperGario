@@ -15,7 +15,7 @@ public class EnemyContactDamage : MonoBehaviour
         }
 
         PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-        if(playerHealth != null)
+        if (playerHealth != null)
         {
             playerHealth.TakeDamage(damageAmount);
         }

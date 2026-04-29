@@ -17,4 +17,9 @@ public class BGMPlayer : MonoBehaviour
         audioSource.volume = 0.7f;
         audioSource.Play();
     }
+
+    public void StopBGM()
+    {
+        audioSource.Stop();
+    }
 }
